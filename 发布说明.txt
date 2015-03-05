@@ -1,0 +1,97 @@
+﻿    首先声明，我不是第一个做出类似查看器的首作者，我所知道的首作者是johance，以下是它在cocoschina发布的贴子。
+
+    分享 刀塔查看器Flash導出版本(帶詳細解析說明)和Flash導入導出批處理文件
+    http://www.cocoachina.com/bbs/read.php?tid-219173.html
+
+    贴子里面描述了《刀塔传奇》骨骼动画的文件格式，我是参考这个文件格式写出来的。我的实现思路是将*.fca文件转换成DragonBonesCPP所需要的格式，然后就可以通过DragonBonesCPP播放出来了。注意这里没有转换成DragonBonesCPP的skeleton.xml，而是直接转换成了DragonBonesCPP解析skeleton.xml后的数据结构，免去了中间环节。当然你也可以通过我实现的代码接口导出DragonBonesCPP的三个文件sheet.pvr、texture.xml、skeleton.xml，然后像平时使用DragonBonesCPP的那样来加载播放，这样可以避免加载时转换，效率更高。
+
+    *.fca文件是一个zip压缩包，将其用WinRAR解压缩出来后，可以得到cha、plist、sheet.pvr三个文件，其中sheet.pvr是纹量集图片，包含了该角色使用的所有骨骼碎图。plist是纹量集的骨骼碎图描述文件，描述了每个骨骼碎图在sheet.pvr大图中的坐标、大小等区域信息。cha是骨骼动画数据文件，其格式如下所述。
+
+cha格式：
+
+声明：
+以下格式来自于johance公布的贴子，只做了少量修饰和补充。
+
+{}表示一个数据结构，带...表示有多个数据结构。
+
+角色名称长度(4B)
+角色名称 不包含"\0"
+骨骼数量(4B)
+｛
+	骨骼名称长度(4B)
+	骨骼名称
+	骨骼图片文件名长度(4B)
+	骨骼图片文件名
+	骨骼索引(4B)
+｝...
+动画个数(4B)
+｛
+	动画名称长度(4B)
+	动画名称
+	未知数据(4B) 固定为0x41c00000
+	动画帧数(4B)
+	｛
+		帧类型(4B)
+		｛	
+			// 帧类型为1时才需要解析这个结构，否则跳过这个结构
+			未知数据1(4B)
+			声音文件名称长度(4B)
+			声音文件名称
+			未知声音数据(32B)
+			未知数据2(4B)
+		 ｝
+		当前帧使用的骨骼数量(4B)
+		｛
+			骨骼索引(2B)
+			透明度(1B)
+			a、b、c、d、tx、ty(类似Flash中的Matrix的6个float)
+		 ｝...
+	}...
+｝...
+
+类似Flash中的Matrix的6个float的详细含义请参考以下文章和AS代码。
+
+as3中Matrix详解
+http://wgcode.iteye.com/blog/838550
+
+MatrixTransformer.as：
+
+public static function getScaleX(m:Matrix):Number
+{
+    return Math.sqrt(m.a*m.a + m.b*m.b);
+}
+
+public static function getScaleY(m:Matrix):Number
+{
+    return Math.sqrt(m.c*m.c + m.d*m.d);
+}
+
+public static function getSkewX(m:Matrix):Number
+{
+    return Math.atan2(-m.c, m.d) * (180/Math.PI);
+}
+
+public static function getSkewY(m:Matrix):Number
+{
+    return Math.atan2(m.b, m.a) * (180/Math.PI);
+}
+
+开发环境：
+Cocos2d-x-3.3 Final
+DragonBonesCPP
+
+Windows安装包下载地址：
+http://pan.baidu.com/s/1dDyBu85
+
+Android安装包下载地址：
+http://pan.baidu.com/s/1rVOCI
+
+资源下载地址：
+http://pan.baidu.com/s/14NgoI
+
+项目地址：
+https://github.com/zym2014/DotaSkeletonAnim
+
+作者Blog：
+http://zym.cnblogs.com
+http://blog.csdn.net/zym_123456
