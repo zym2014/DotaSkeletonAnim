@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bd3d9b67-4ea3-4105-9912-6ac928f9c303}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\DotaAnimParser">
+      <UniqueIdentifier>{0bdbb6bd-7068-4d46-8a80-e79acfb608e4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DotaAnimParser\ByteArray.cpp">
+      <Filter>src\DotaAnimParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DotaAnimParser\DBCCFactoryEx.cpp">
+      <Filter>src\DotaAnimParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DotaAnimParser\DotaAnimParser.cpp">
+      <Filter>src\DotaAnimParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MainScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utils.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DotaAnimParser\DBCCTextureAtlasEx.h">
+      <Filter>src\DotaAnimParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DotaAnimParser\ByteArray.h">
+      <Filter>src\DotaAnimParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DotaAnimParser\DBCCFactoryEx.h">
+      <Filter>src\DotaAnimParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DotaAnimParser\DotaAnimParser.h">
+      <Filter>src\DotaAnimParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DotaAnimParser\DotaAnimData.h">
+      <Filter>src\DotaAnimParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
