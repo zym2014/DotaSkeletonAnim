@@ -1,4 +1,5 @@
-﻿    首先声明，我不是第一个做出类似查看器的首作者，我所知道的首作者是johance，以下是它在cocoschina发布的贴子。
+﻿2015元宵节礼物——《刀塔传奇》骨骼动画查看器，开源啦！
+    首先声明，我不是第一个做出类似查看器的首作者，我所知道的首作者是johance，以下是它在cocoschina发布的贴子。
 
     分享 刀塔查看器Flash導出版本(帶詳細解析說明)和Flash導入導出批處理文件
     http://www.cocoachina.com/bbs/read.php?tid-219173.html
